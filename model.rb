@@ -22,9 +22,8 @@ class User
     return nil unless params[:username] == @user[:username]
 
     password_hash = Password.new(@user[:password])
-    @user if password_hash == params[:password]
+    @user[:id] if password_hash == params[:password]
   end
-
 end
 
 class LottoTicket

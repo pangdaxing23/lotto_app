@@ -33,6 +33,7 @@ end
 post '/login' do
   if user = User.authenticate(params)
     session[:user] = user
+    puts "======>>>>> #{ session[:user] }"
     redirect '/home'
   else
     flash[:notice] = 'You could not be signed in. Did you enter the correct username and password?'
@@ -52,9 +53,20 @@ post '/signup' do
   end
 end
 
-get '/home/?' do
+get '/home/?*' do
   authenticate!
   haml :home, locals: { title: "Add or view your tickets" }
+end
+
+post '/home/add-lotto-ticket' do
+  # puts User.first(id: session[:user])
+  User.first(id: session[:user]).lotto_tickets.new(num1: params[:num1],
+                                                  num2: params[:num2],
+                                                  num3: params[:num3],
+                                                  num4: params[:num4],
+                                                  num5: params[:num5],
+                                                  num6: params[:num6]).save
+  redirect '/home'
 end
 
 get '/signout' do

@@ -3,7 +3,7 @@
   .col-xs-6
     %h1 Add or view your lottery tickets
     %br/
-    %form{action: "/add-lotto-number", :method => "post"}
+    %form{action: "/home/add-lotto-ticket", :method => "post"}
       %fieldset
         %legend Add new ticket:
         %input.lotto-num{:type => "text", :name => "num1", maxlength: 2}
