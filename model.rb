@@ -2,7 +2,7 @@ require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'bcrypt'
 
-DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data/db.sqlite")
+DataMapper.setup(:default, "sqlite://#{Dir.pwd}/db.sqlite")
 
 class User
   include DataMapper::Resource
@@ -19,12 +19,9 @@ class User
     return nil if params[:username].blank? or params[:password].blank?
 
     return nil unless @user = User.first(username: params[:username])
-    puts "=====>>>>>#{@user[:username]}"
     return nil unless params[:username] == @user[:username]
 
     password_hash = Password.new(@user[:password])
-    puts "password_hash===.....>>>> #{password_hash}"
-    puts "+password_hash == params[:password]+++++>>>>>#{password_hash == params[:password]}"
     @user if password_hash == params[:password]
   end
 
