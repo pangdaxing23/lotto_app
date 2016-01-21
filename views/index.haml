@@ -1,0 +1,33 @@
+-# !!! 5
+-# %html
+-#   %head
+-#     %meta{:charset => "utf-8"}
+-#     -# <meta http-equiv="refresh" content="3" >
+-#     %title Did you win the powerball?
+-#     %link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous")
+-#   %body
+.row
+  .col-xs-3
+  .col-xs-6
+    %h1 DID YOU WIN THE POWERBALL?
+    -# %h2 Sign in and find out
+    %form{action: "/login", :method => "post"}
+      %fieldset
+        %legend Sign in and find out
+        %input{:type => "text", :name => "username", :placeholder => "Username"}
+        %input{:type => "password", :name => "password", :placeholder => "Password"}
+      %input{:type => "submit", value: "Login"}
+    %h1 or
+  .col-xs-3
+.row
+  .col-xs-3
+  .col-xs-6
+    -# %h2 Sign up
+    %form{action: "/signup", :method => "post"}
+      %fieldset
+        %legend Sign up
+        %input{:type => "email", :name => "email", :placeholder => "Email"}
+        %input{:type => "text", :name => "username", :placeholder => "Username"}
+        %input{:type => "password", :name => "password", :placeholder => "Password"}
+      %input{:type => "submit", :value => "Sign up"}
+  .col-xs-3

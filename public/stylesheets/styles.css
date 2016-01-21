@@ -1,0 +1,13 @@
+.notice {
+  background-color: #999;
+  border-radius: 6px;
+  color: #fff;
+  display: inline-block;
+  margin: 0;
+  padding: 5px 8px 5px;
+}
+.lotto-num {
+    border-radius: 500px;
+    text-align: center;
+    width: 25px;
+}

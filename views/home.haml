@@ -1,0 +1,18 @@
+.row
+  .col-xs-3
+  .col-xs-6
+    %h1 Add or view your lottery tickets
+    %br/
+    %form{action: "/add-lotto-number", :method => "post"}
+      %fieldset
+        %legend Add new ticket:
+        %input.lotto-num{:type => "text", :name => "num1", maxlength: 2}
+        %input.lotto-num{:type => "text", :name => "num2", maxlength: 2}
+        %input.lotto-num{:type => "text", :name => "num3", maxlength: 2}
+        %input.lotto-num{:type => "text", :name => "num4", maxlength: 2}
+        %input.lotto-num{:type => "text", :name => "num5", maxlength: 2}
+        %input.lotto-num{:type => "text", :name => "num6", maxlength: 2, style: "background-color: red; color: white"}
+      %input{:type => "submit", :value => "Add lotto ticket"}
+  .col-xs-3
+    %form{action: "/signout", method: "get"}
+      %input{:type => 'submit', value: "Sign out"}
