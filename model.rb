@@ -17,7 +17,6 @@ class User
 
   def self.authenticate(params = {})
     return nil if params[:username].blank? or params[:password].blank?
-
     return nil unless @user = User.first(username: params[:username])
     return nil unless params[:username] == @user[:username]
 
@@ -36,6 +35,7 @@ class LottoTicket
   property :num4, String
   property :num5, String
   property :num6, String
+  property :created_at, DateTime, default: Time.now
 
   belongs_to :user
 end

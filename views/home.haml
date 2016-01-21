@@ -12,7 +12,16 @@
         %input.lotto-num{:type => "text", :name => "num4", maxlength: 2}
         %input.lotto-num{:type => "text", :name => "num5", maxlength: 2}
         %input.lotto-num{:type => "text", :name => "num6", maxlength: 2, style: "background-color: red; color: white"}
-      %input{:type => "submit", :value => "Add lotto ticket"}
+      %br/
+      %input{:type => "submit", :value => "Add ticket"}
+      %br/
+      %br/
+      %br/
+    %form
+      %fieldset
+        %legend Your tickets
+        - (User.first(id: session[:user]).lotto_tickets).each do |i|
+          %p= "#{i[:created_at]}: #{i[:num1]} #{i[:num2]} #{i[:num3]} #{i[:num4]} #{i[:num5]} #{i[:num6]}"
   .col-xs-3
     %form{action: "/signout", method: "get"}
       %input{:type => 'submit', value: "Sign out"}

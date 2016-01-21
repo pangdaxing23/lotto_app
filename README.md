@@ -6,6 +6,7 @@ At the time of writing this, the Powerball is at $50 million.
 Run with `ruby lotto.rb`
 Check it out on `http://localhost:4567`
 
-TODO: implement ticket view
+TODO: Prettify ticket list
+TODO: Prettify everything else
 TODO: implement powerball watching
 TODO: implement email sending

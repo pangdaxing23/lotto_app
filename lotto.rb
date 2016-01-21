@@ -11,8 +11,6 @@ require_relative 'lib/core_ext/object.rb'
 FIFTEEN_MINUTES = 60 * 15
 use Rack::Session::Pool, expire_after: FIFTEEN_MINUTES # Expire sessions after fifteen minutes of inactivity
 
-# class LottoApp < Sinatra::Base
-
 helpers do
   def authenticate!
     unless session[:user]
@@ -33,7 +31,6 @@ end
 post '/login' do
   if user = User.authenticate(params)
     session[:user] = user
-    puts "======>>>>> #{ session[:user] }"
     redirect '/home'
   else
     flash[:notice] = 'You could not be signed in. Did you enter the correct username and password?'
@@ -59,13 +56,12 @@ get '/home/?*' do
 end
 
 post '/home/add-lotto-ticket' do
-  # puts User.first(id: session[:user])
   User.first(id: session[:user]).lotto_tickets.new(num1: params[:num1],
-                                                  num2: params[:num2],
-                                                  num3: params[:num3],
-                                                  num4: params[:num4],
-                                                  num5: params[:num5],
-                                                  num6: params[:num6]).save
+                                                   num2: params[:num2],
+                                                   num3: params[:num3],
+                                                   num4: params[:num4],
+                                                   num5: params[:num5],
+                                                   num6: params[:num6]).save
   redirect '/home'
 end
 
@@ -74,7 +70,3 @@ get '/signout' do
   flash[:notice] = 'You have been signed out.'
   redirect '/'
 end
-
-# end
-
-# LottoApp.run!
