@@ -4,12 +4,21 @@
 require 'sinatra'
 require 'sinatra/flash'
 require 'tilt/haml'
+require 'net/http'
 
 require_relative 'model'
 require_relative 'lib/core_ext/object.rb'
 
-FIFTEEN_MINUTES = 60 * 15
-use Rack::Session::Pool, expire_after: FIFTEEN_MINUTES # Expire sessions after fifteen minutes of inactivity
+THIRTY_MINUTES = 60 * 30
+use Rack::Session::Pool, expire_after: THIRTY_MINUTES # Expire sessions after fifteen minutes of inactivity
+
+helpers do
+	url = URI.parse('http://www.example.com/index.html')
+	req = Net::HTTP::Get.new(url.to_s)
+	res = Net::HTTP.start(url.host, url.port) {|http| http.request(req) }
+	puts res.body
+end
+
 
 helpers do
   def authenticate!
